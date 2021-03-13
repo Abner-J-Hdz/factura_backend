@@ -1,4 +1,4 @@
-const { findById } = require("../models/Articulo");
+
 const Articulo = require("../models/Articulo");
 
 exports.crearArticulo = async (req, res) => {
@@ -122,7 +122,7 @@ exports.eliminarArticulo = async(req, res) => {
     
         if(!articulo) return res.status(404).json({ message: 'El articulo que desea eliminar no existe'});
 
-        await Articulo.findByIdAndRemove({idArticulo});
+        await Articulo.findByIdAndRemove(idArticulo);
         
         res.json({ message: `El articulo ${articulo.nombre} ha sido eliminado correctamente`});
 
