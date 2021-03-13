@@ -2,10 +2,14 @@ const mongoose =  require('mongoose');
 
 const Articulo_Schema = mongoose.Schema({
     codigo: {
-        type: Number,
+        type: String,
         required: true,
         trim:true,
         unique: true
+    },
+    nombre: {
+        type: String,
+        required: true
     },
     descripcion:{
         type: String,
