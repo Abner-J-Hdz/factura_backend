@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 
 const DetalleFacturaSchema = mongoose.Schema({
     id_factura:{
-        type: mongoose.SchemaType.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Factura',
         required: true
     },
     id_articulo:{
-        type: mongoose.SchemaType.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Articulo',
         required: true
     },

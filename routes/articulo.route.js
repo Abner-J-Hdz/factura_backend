@@ -4,8 +4,9 @@ const router = express.Router();
 const ArticuloController = require("../controllers/articulo.controller");
 
 router.post('/', ArticuloController.crearArticulo);
-router.get('/', ArticuloController.obtenerArticulo);
-router.get('/:id', ArticuloController.obtenerUnArticulo);
+router.get('/activos/:codigo', ArticuloController.obtenerArticuloActivos);
+router.get('/', ArticuloController.obtenerArticulos);
+router.get('/:id',ArticuloController.obtenerUnArticulo);
 router.put('/:id', ArticuloController.editarArticulo);
 router.delete('/:id', ArticuloController.eliminarArticulo);
 

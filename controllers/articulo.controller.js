@@ -36,19 +36,19 @@ exports.crearArticulo = async (req, res) => {
     }
 }
 
-exports.obtenerArticulo = async (req, res) => {
+exports.obtenerArticuloActivos = async (req, res) => {
     try {
-        let codigo = req.body.codigo;
-        if(codigo.length > 1){
+        
+        let codigo = req.params.codigo;
+
+        if(codigo){
             var regexp = new RegExp("^" + codigo);
-            let articulos = await Articulo.find({ codigo: regexp }).limit(5);
+            let articulos = await Articulo.find({ activo: true, codigo: regexp  }).limit(5);
     
-            return res.json({ articulos });
+            return res.json({ articulos, message: "OK" });
         }
         else{
-            let articulos = await Articulo.find();
-    
-            return res.json({ articulos });
+            return res.json({ articulos:[] });
         }
 
     } catch (error) {
@@ -56,6 +56,19 @@ exports.obtenerArticulo = async (req, res) => {
         return res.status(500).json({ message: 'Error de servidor'});
     }
 }
+
+exports.obtenerArticulos = async (req, res) => {
+    try {
+            let articulos = await Articulo.find();
+    
+            return res.json({ articulos });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: 'Error de servidor'});
+    }
+}
+
 
 exports.obtenerUnArticulo = async(req, res) => {
     const idArticulo = req.params.id;

@@ -19,10 +19,10 @@ const PORT = process.env.PORT || 4002;
 
 //importacion de rutas
 const ArticuloRoute = require('./routes/articulo.route');
-
+const FacturaRouter =  require('./routes/factura.route');
 //Rutas
 app.use('/api/articulo', ArticuloRoute);
-
+app.use('/api/factura', FacturaRouter);
 
 //Arrancar la appp
 app.listen(PORT, () => {
