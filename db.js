@@ -10,7 +10,7 @@ const connectDB = async () => {
             useNewUrlParser: true
         })
         console.log("##################################");
-        console.log(`##### Database  is  conneted #####`);
+        console.log(`##### Database  is connected #####`);
         console.log("##################################");
     } catch (error) {
         console.log(`Ocurrió un erro al conecta la base de datos... ${error}`);

@@ -58,10 +58,24 @@ exports.obtenerArticuloActivos = async (req, res) => {
 }
 
 exports.obtenerArticulos = async (req, res) => {
-    try {
-            let articulos = await Articulo.find();
-    
-            return res.json({ articulos });
+    const { search = '', criterioSearch = 'nombre' } = req.query;
+    console.log(criterioSearch)             
+    try{
+       let articulos;
+        if(!search){
+           articulos = await Articulo.find();
+        }else{
+            var regexp = new RegExp("^" + search);
+            
+            if(criterioSearch.toLowerCase() === 'nombre' || !criterioSearch){
+                articulos = await Articulo.find({ nombre: regexp});
+            }
+            if(criterioSearch.toLowerCase() === 'codigo'){
+                articulos = await Articulo.find({ codigo: regexp});
+            }
+        }
+        //let longitudArray = articulos.length;message: longitudArray > 0 ? "ok" : "No se encontro articulo"
+        return res.json({ articulos  });
 
     } catch (error) {
         console.log(error);

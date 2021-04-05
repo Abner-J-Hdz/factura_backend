@@ -2,7 +2,7 @@ const Factura = require("../models/Factura");
 
 exports.crearFactura = async (req, res) => {
 
-    let { usuario, subtotal, impuesto, total, detalles } = req.body;
+    let { usuario, subtotal, total } = req.body;
     const date = new Date();
 
     if (!usuario || !subtotal || !total) {

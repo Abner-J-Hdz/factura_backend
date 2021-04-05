@@ -18,6 +18,10 @@ const FacturaSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    totalImpuesto: {
+        type: Number,
+        required: true
+    },
    detalles: [{
            id_articulo:{
                 type: mongoose.Schema.Types.ObjectId,
@@ -36,15 +40,15 @@ const FacturaSchema = mongoose.Schema({
                type: String,
                required: true
            },
-           subtotalArt: {
+           subtotal: {
                 type: Number,
                 required: true
            },
-           impuestoArt: {
+           impuesto: {
                 type: Number,
                 required: true               
            },
-           totalArt:{
+           total:{
                 type: Number,
                 required: true
            }
